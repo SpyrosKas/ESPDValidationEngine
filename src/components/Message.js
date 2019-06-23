@@ -1,9 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const Message = ({ msg }) => {
+const Message = ({ msg, hasError }) => {
   return (
-    <div className="alert alert-info alert-dismissible fade show" role="alert">
+    <div
+      className={`alert alert-dismissible fade show ${
+        hasError ? "alert-danger" : "alert-info"
+      }`}
+      role="alert"
+    >
       {msg}
       <button
         type="button"

@@ -1,6 +1,48 @@
+mat-list {
+  text-align: start;
+}
+
+mat-list-item {
+  margin-top: -10px;
+  margin-bottom: -10px;
+}
+
+mat-list-item p {
+  font-size: 13px;
+}
+
+mat-list-item h5 {
+  margin-right: 5px;
+}
+
+.list-group {
+  text-align: start;
+}
+
+.main-ul {
+  list-style-type: none;
+}
+
+.list-group-item {
+  word-wrap: break-word;
+}
+
+/* .modal-header {
+  padding: 9px 15px;
+  border-bottom: 1px solid #eee;
+  background-color: #0480be;
+  -webkit-border-top-left-radius: 5px;
+  -webkit-border-top-right-radius: 5px;
+  -moz-border-radius-topleft: 5px;
+  -moz-border-radius-topright: 5px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+} */
+
 .AppDatAcc {
   text-align: center;
-  background-color: rgb(206, 213, 223);
+  /* background-color: rgb(206, 213, 223); */
+  background-color: #90ccf4;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -10,7 +52,7 @@
 }
 
 .Card {
-  background-color: white;
+  background-color: #ececec;
   padding: 32px;
   width: 50%;
   display: flex;

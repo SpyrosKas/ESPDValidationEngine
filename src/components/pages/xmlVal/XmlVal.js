@@ -6,9 +6,10 @@ import "./XmlVal.css";
 
 const XmlVal = () => {
   const [firstFileUploaded, setfirstFileUploaded] = useState(false);
-  const [title, setTitle] = useState("Upload File Xml File To Validate");
+  const [title, setTitle] = useState("Upload Xml File To Validate");
   const [componentResults, setcomponentResults] = useState();
   const [doubleUpload, setDoubleUpload] = useState(false);
+  const [compEndpoint, setCompEndpoint] = useState("validateXML");
 
   const [resFilename, setresFilename] = useState("");
   const [resArtefactType, setresArtefactType] = useState("");
@@ -21,7 +22,6 @@ const XmlVal = () => {
   const [resValidationStatus, setresValidationStatus] = useState("");
   const [resValidatorResults, setresValidatorResults] = useState([]);
   const [resWarnings, setresWarnings] = useState();
-  let results = resValidatorResults || {};
 
   // const onFirstFileReady = () => {
   //   setfirstFileUploaded(true);
@@ -265,8 +265,11 @@ const XmlVal = () => {
       </div>
 
       <div className="AppXmlVal">
-        <h4 className="display-4 text-center mt-5" style={{ fontSize: 40 }}>
-          <i className="fas fa-cloud-upload-alt" /> Xml Validation Upload
+        <h4
+          className="display-4 text-center mt-5"
+          style={{ fontSize: 40, color: "#ececec" }}
+        >
+          <i className="fas fa-cloud-upload-alt" /> Xml Validation
         </h4>
 
         <div className="Card  mt-4 mb-3">
@@ -275,6 +278,7 @@ const XmlVal = () => {
             title={title}
             onResponse={onResponse}
             doubleUpload={doubleUpload}
+            compEndpoint={compEndpoint}
           />
         </div>
         {componentResults && (

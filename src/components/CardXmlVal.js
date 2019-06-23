@@ -23,7 +23,7 @@ function CardXmlVal() {
       onMouseLeave={() => set({ xys: [0, 0, 1] })}
       style={{
         transform: props.xys.interpolate(trans),
-        backgroundColor: "red"
+        backgroundColor: "#f3d250"
       }}
     >
       <Link style={linkStyle} to="/xmlval">

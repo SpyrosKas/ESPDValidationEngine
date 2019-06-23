@@ -2,23 +2,33 @@ import React, { Fragment, useState } from "react";
 import Dropzone from "../dropzone/Dropzone";
 import Progress from "../Progress";
 import Message from "../Message";
+import api from "../../api";
 import axios from "axios";
 
 import "./Upload.css";
 
-const Upload = ({ title, onResponse, doubleUpload }) => {
+const Upload = ({
+  title,
+  onResponse,
+  doubleUpload,
+  compEndpoint,
+  onFileAdd,
+  onFileDelete
+}) => {
   const [filesToUpload, setFilesToUpload] = useState([]);
   //   const [file, setFile] = useState("");
   const [filename, setFilename] = useState("Choose File");
   const [uploadedFiles, setUploadedFiles] = useState();
   const [message, setMessage] = useState("");
+  const [hasError, setHasError] = useState(false);
   const [uploadPercentage, setUploadPercentage] = useState(0);
   const [uploading, setUploading] = useState(false);
   const [successfullUploaded, setSuccessfullUploaded] = useState(false);
+  const [endpoint, setEndpoint] = useState(`${api.apiUrl}${compEndpoint}`);
 
   // Upload Button
   const disabled =
-    filesToUpload.length < 1 || successfullUploaded ? true : false;
+    filesToUpload.length < 1 || successfullUploaded || hasError ? true : false;
 
   const onFilesAdded = e => {
     // setFile(files[0]);
@@ -31,15 +41,16 @@ const Upload = ({ title, onResponse, doubleUpload }) => {
 
     if (doubleUpload) {
       for (var i = 0; i < files.length; i++) {
-        // const friba = files.item(i);
-        // console.log(friba);
-        // setFilesToUpload([...filesToUpload, friba]);
-        setFilesToUpload(e.target.files[0]);
+        const friba = files.item(i);
+        console.log(friba);
+        setFilesToUpload([...filesToUpload, friba]);
+        // setFilesToUpload(e.target.files[0]);
+        onFileAdd();
       }
     } else {
       const friba = files.item(0);
-      const array = [friba];
-      setFilesToUpload(array);
+      // const array = [friba];
+      setFilesToUpload([friba]);
     }
 
     console.log(filesToUpload);
@@ -59,25 +70,21 @@ const Upload = ({ title, onResponse, doubleUpload }) => {
     setUploading(true);
 
     try {
-      const res = await axios.post(
-        "http://localhost:8080/api/validateXML",
-        formData,
-        {
-          //   headers: {
-          //     "Content-Type": "application/json"
-          //   },
-          onUploadProgress: progressEvent => {
-            setUploadPercentage(
-              parseInt(
-                Math.round((progressEvent.loaded * 100) / progressEvent.total)
-              )
-            );
+      const res = await axios.post(endpoint, formData, {
+        //   headers: {
+        //     "Content-Type": "application/json"
+        //   },
+        onUploadProgress: progressEvent => {
+          setUploadPercentage(
+            parseInt(
+              Math.round((progressEvent.loaded * 100) / progressEvent.total)
+            )
+          );
 
-            // Clear percentage
-            // setTimeout(() => setUploadPercentage(0), 10000);
-          }
+          // Clear percentage
+          // setTimeout(() => setUploadPercentage(0), 10000);
         }
-      );
+      });
       console.log(res);
 
       // const { fileName, filePath } = res.data;
@@ -97,6 +104,9 @@ const Upload = ({ title, onResponse, doubleUpload }) => {
       // } else {
       //   setMessage(err.response.data.msg);
       // }
+      console.log(err);
+      setMessage(err.message);
+      setHasError(true);
     }
     setUploading(false);
   };
@@ -108,6 +118,10 @@ const Upload = ({ title, onResponse, doubleUpload }) => {
       ...filesToUpload.filter(file => file.name !== e.target.name)
     ]);
 
+    if (doubleUpload) {
+      onFileDelete();
+    }
+
     // setFile("");
     setFilename("Choose File");
   };
@@ -115,14 +129,19 @@ const Upload = ({ title, onResponse, doubleUpload }) => {
   return (
     <Fragment>
       <div className="Upload">
-        {message ? <Message msg={message} /> : null}
+        {message ? <Message msg={message} hasError={hasError} /> : null}
         <span className="Title">{title}</span>
         <form className="Form" onSubmit={onSubmit}>
           <div className="Content">
             <div>
               <Dropzone
                 onFilesAdded={onFilesAdded}
-                disabled={uploading || successfullUploaded}
+                disabled={
+                  uploading ||
+                  successfullUploaded ||
+                  (doubleUpload && filesToUpload.length === 2) ||
+                  (!doubleUpload && filesToUpload.length === 1)
+                }
               />
             </div>
             <div className="Files">
@@ -131,7 +150,7 @@ const Upload = ({ title, onResponse, doubleUpload }) => {
                   <div key={f.name} className="Row">
                     <span className="Filename">
                       {f.name}
-                      {!successfullUploaded && (
+                      {!successfullUploaded && title !== "Upload Files" && (
                         <img
                           name={f.name}
                           className="DeleteIcon"

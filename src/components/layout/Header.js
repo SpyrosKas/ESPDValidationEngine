@@ -16,7 +16,10 @@ function Header() {
       <Link style={linkStyle} to="/datper">
         Data Persistence
       </Link> */}
-      <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
+      <nav
+        className="navbar navbar-expand-lg navbar-dark "
+        style={{ backgroundColor: "#5D5c61" }}
+      >
         <button
           className="navbar-toggler"
           type="button"

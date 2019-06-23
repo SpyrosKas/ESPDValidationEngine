@@ -23,7 +23,7 @@ function CardDataAcc() {
       onMouseLeave={() => set({ xys: [0, 0, 1] })}
       style={{
         transform: props.xys.interpolate(trans),
-        backgroundColor: "green"
+        backgroundColor: "#90ccf4"
       }}
     >
       <Link style={linkStyle} to="/datAcc">
