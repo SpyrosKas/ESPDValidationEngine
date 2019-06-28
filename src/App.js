@@ -1,7 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import { useSpring, animated } from "react-spring";
 import Header from "./components/layout/Header";
 import XmlVal from "./components/pages/xmlVal/XmlVal";
 import DatAcc from "./components/pages/dataAcc/DatAcc";
@@ -45,10 +43,5 @@ class App extends Component {
     );
   }
 }
-
-const linkStyle = {
-  color: "#fff",
-  textDecoration: "none"
-};
 
 export default App;

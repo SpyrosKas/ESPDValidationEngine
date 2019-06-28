@@ -38,26 +38,24 @@ function Header() {
             </Link>
           </span>
 
-          <div className="collapse navbar-collapse">
-            <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
-              <li className="nav-item active">
-                <Link className="nav-link" style={linkStyle} to="/xmlval">
-                  XML Validation
-                </Link>
-                <span className="sr-only">(current)</span>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" style={linkStyle} to="/datAcc">
-                  Data Acceptance
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" style={linkStyle} to="/datper">
-                  Data Persistence
-                </Link>
-              </li>
-            </ul>
-          </div>
+          <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li className="nav-item active">
+              <Link className="nav-link" style={linkStyle} to="/xmlval">
+                XML Validation
+              </Link>
+              <span className="sr-only">(current)</span>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" style={linkStyle} to="/datAcc">
+                Data Acceptance
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" style={linkStyle} to="/datper">
+                Data Persistence
+              </Link>
+            </li>
+          </ul>
         </div>
       </nav>
     </header>

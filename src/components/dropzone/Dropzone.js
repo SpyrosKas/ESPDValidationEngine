@@ -33,9 +33,9 @@ class Dropzone extends Component {
 
     if (this.props.disabled) return;
 
-    const files = event.dataTransfer.files;
+    // const files = event.dataTransfer.files;
     if (this.props.onFilesAdded) {
-      const array = this.fileListToArray(files);
+      // const array = this.fileListToArray(files);
       this.props.onFilesAdded(event);
     }
     this.setState({ hightlight: false });
@@ -48,9 +48,9 @@ class Dropzone extends Component {
 
   onFilesAdded(evt) {
     if (this.props.disabled) return;
-    const files = evt.target.files;
+    // const files = evt.target.files;
     if (this.props.onFilesAdded) {
-      const array = this.fileListToArray(files);
+      // const array = this.fileListToArray(files);
       this.props.onFilesAdded(evt);
     }
   }
@@ -92,9 +92,9 @@ class Dropzone extends Component {
   }
 }
 
-// Dropzone.propTypes = {
-//   onFilesAdded: PropTypes.any.isRequired,
-//   disabled: PropTypes.any.isRequired
-// };
+Dropzone.propTypes = {
+  onFilesAdded: PropTypes.func.isRequired,
+  disabled: PropTypes.bool.isRequired
+};
 
 export default Dropzone;

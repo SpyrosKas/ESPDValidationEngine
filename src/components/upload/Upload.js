@@ -17,18 +17,22 @@ const Upload = ({
 }) => {
   const [filesToUpload, setFilesToUpload] = useState([]);
   //   const [file, setFile] = useState("");
-  const [filename, setFilename] = useState("Choose File");
+  // const [filename, setFilename] = useState("Choose File");
   const [uploadedFiles, setUploadedFiles] = useState();
   const [message, setMessage] = useState("");
   const [hasError, setHasError] = useState(false);
   const [uploadPercentage, setUploadPercentage] = useState(0);
   const [uploading, setUploading] = useState(false);
   const [successfullUploaded, setSuccessfullUploaded] = useState(false);
-  const [endpoint, setEndpoint] = useState(`${api.apiUrl}${compEndpoint}`);
+  const [endpoint] = useState(`${api.apiUrl}${compEndpoint}`);
+
+  // const endpoint = `${api.apiUrl}${compEndpoint}`;
 
   // Upload Button
   const disabled =
-    filesToUpload.length < 1 || successfullUploaded || hasError ? true : false;
+    filesToUpload.length < 1 || successfullUploaded || hasError || uploading
+      ? true
+      : false;
 
   const onFilesAdded = e => {
     // setFile(files[0]);
@@ -104,7 +108,7 @@ const Upload = ({
       // } else {
       //   setMessage(err.response.data.msg);
       // }
-      console.log(err);
+      console.log(err.message);
       setMessage(err.message);
       setHasError(true);
     }
@@ -123,7 +127,7 @@ const Upload = ({
     }
 
     // setFile("");
-    setFilename("Choose File");
+    // setFilename("Choose File");
   };
 
   return (
@@ -173,7 +177,7 @@ const Upload = ({
               })}
               {filesToUpload.length > 0 && (
                 <div className="ProgressWrapper">
-                  <Progress percentage={uploadPercentage} />
+                  <Progress percentage={uploadPercentage} hasError={hasError} />
                   <img
                     className="CheckIcon"
                     alt="done"

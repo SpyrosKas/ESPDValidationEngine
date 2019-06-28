@@ -1,15 +1,14 @@
 import React, { useState } from "react";
 import Upload from "../../upload/Upload";
-import UploadArrayTest from "../../uploadArrayTest";
 
 import "./XmlVal.css";
 
 const XmlVal = () => {
-  const [firstFileUploaded, setfirstFileUploaded] = useState(false);
+  // const [firstFileUploaded, setfirstFileUploaded] = useState(false);
   const [title, setTitle] = useState("Upload Xml File To Validate");
   const [componentResults, setcomponentResults] = useState();
-  const [doubleUpload, setDoubleUpload] = useState(false);
-  const [compEndpoint, setCompEndpoint] = useState("validateXML");
+  const [doubleUpload] = useState(false);
+  const [compEndpoint] = useState("validateXML");
 
   const [resFilename, setresFilename] = useState("");
   const [resArtefactType, setresArtefactType] = useState("");

@@ -4,11 +4,13 @@ import Upload from "../../upload/Upload";
 import "./DatAcc.css";
 
 const DatAcc = () => {
-  const [firstFileUploaded, setfirstFileUploaded] = useState(false);
+  // const [firstFileUploaded, setfirstFileUploaded] = useState(false);
   const [title, setTitle] = useState("Upload Xml File To Validate");
   const [componentResults, setcomponentResults] = useState();
-  const [doubleUpload, setDoubleUpload] = useState(false);
-  const [compEndpoint, setCompEndpoint] = useState("validateDA");
+  // const [doubleUpload, setDoubleUpload] = useState(false);
+  // const [compEndpoint, setCompEndpoint] = useState("validateDA");
+  const [doubleUpload] = useState(false);
+  const [compEndpoint] = useState("validateDA");
 
   const [resFilename, setresFilename] = useState("");
   const [resArtefactType, setresArtefactType] = useState("");

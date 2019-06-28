@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import Upload from "../../upload/Upload";
-import UploadArrayTest from "../../uploadArrayTest";
 
 import "./DatPer.css";
 
 const DatPer = () => {
   const [title, setTitle] = useState("Upload ESPD Request");
-  const [doubleUpload, setDoubleUpload] = useState(true);
+  const [doubleUpload] = useState(true);
   const [firstFileUploaded, setfirstFileUploaded] = useState(false);
-  const [compEndpoint, setCompEndpoint] = useState("validateDP");
+  const [compEndpoint] = useState("validateDP");
 
   const [componentResults, setcomponentResults] = useState();
   const [resFilename, setresFilename] = useState("");
@@ -22,6 +21,9 @@ const DatPer = () => {
   const [resValidationStatus, setresValidationStatus] = useState("");
   const [resValidatorResults, setresValidatorResults] = useState([]);
   const [resWarnings, setresWarnings] = useState();
+
+  // const doubleUpload = true;
+  // const compEndpoint = "validateDP";
 
   const onFileAdd = () => {
     if (title === "Upload ESPD Request") {
