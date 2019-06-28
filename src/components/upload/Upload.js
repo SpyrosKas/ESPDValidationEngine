@@ -30,7 +30,11 @@ const Upload = ({
 
   // Upload Button
   const disabled =
-    filesToUpload.length < 1 || successfullUploaded || hasError || uploading
+    filesToUpload.length < 1 ||
+    successfullUploaded ||
+    hasError ||
+    uploading ||
+    title === "Upload ESPD Response"
       ? true
       : false;
 
