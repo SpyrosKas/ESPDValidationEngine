@@ -1,7 +1,7 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { useSpring, animated } from "react-spring";
-import "./../App.css";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { useSpring, animated } from 'react-spring';
+import './../App.css';
 
 const calc = (x, y) => [
   -(y - window.innerHeight / 2) / 20,
@@ -18,15 +18,16 @@ function CardDataAcc() {
   }));
   return (
     <animated.div
-      className="card"
+      className='card'
       onMouseMove={({ clientX: x, clientY: y }) => set({ xys: calc(x, y) })}
       onMouseLeave={() => set({ xys: [0, 0, 1] })}
       style={{
         transform: props.xys.interpolate(trans),
-        backgroundColor: "#90ccf4"
+        // backgroundColor: "#90ccf4"
+        backgroundColor: '#575da9'
       }}
     >
-      <Link style={linkStyle} to="/datAcc">
+      <Link style={linkStyle} to='/datAcc'>
         Data Acceptance
       </Link>
     </animated.div>
@@ -34,8 +35,8 @@ function CardDataAcc() {
 }
 
 const linkStyle = {
-  color: "#fff",
-  textDecoration: "none"
+  color: '#fff',
+  textDecoration: 'none'
 };
 
 export default CardDataAcc;

@@ -42,7 +42,8 @@ mat-list-item h5 {
 .AppDatAcc {
   text-align: center;
   /* background-color: rgb(206, 213, 223); */
-  background-color: #90ccf4;
+  /* background-color: #90ccf4; */
+  background-color: #575da9;
   min-height: 100vh;
   display: flex;
   flex-direction: column;

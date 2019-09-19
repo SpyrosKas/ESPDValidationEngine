@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
-import "./Dropzone.css";
+import './Dropzone.css';
 
 class Dropzone extends Component {
   constructor(props) {
@@ -34,9 +34,11 @@ class Dropzone extends Component {
     if (this.props.disabled) return;
 
     // const files = event.dataTransfer.files;
+    console.log('event is: ' + event);
+    console.log('event.dataTransfer.files is: ' + event.dataTransfer.files);
     if (this.props.onFilesAdded) {
       // const array = this.fileListToArray(files);
-      this.props.onFilesAdded(event);
+      this.props.onFilesAdded(event.dataTransfer.files);
     }
     this.setState({ hightlight: false });
   }
@@ -48,10 +50,12 @@ class Dropzone extends Component {
 
   onFilesAdded(evt) {
     if (this.props.disabled) return;
+    console.log('evt is: ' + evt);
+    console.log('evt.target.files is: ' + evt.target.files);
     // const files = evt.target.files;
     if (this.props.onFilesAdded) {
       // const array = this.fileListToArray(files);
-      this.props.onFilesAdded(evt);
+      this.props.onFilesAdded(evt.target.files);
     }
   }
 
@@ -66,25 +70,25 @@ class Dropzone extends Component {
   render() {
     return (
       <div
-        className={`Dropzone ${this.state.hightlight ? "Highlight" : ""}`}
+        className={`Dropzone ${this.state.hightlight ? 'Highlight' : ''}`}
         onDragOver={this.onDragOver}
         onDragLeave={this.onDragLeave}
         onDrop={this.onDrop}
         onClick={this.openFileDialog}
-        style={{ cursor: this.props.disabled ? "default" : "pointer" }}
+        style={{ cursor: this.props.disabled ? 'default' : 'pointer' }}
       >
         <img
-          alt="upload"
-          className="Icon"
-          src="baseline-cloud_upload-24px.svg"
+          alt='upload'
+          className='Icon'
+          src='baseline-cloud_upload-24px.svg'
         />
         <input
           ref={this.fileInputRef}
-          className="FileInput"
-          type="file"
+          className='FileInput'
+          type='file'
           // multiple
           onChange={this.onFilesAdded}
-          accept=".xml"
+          accept='.xml'
         />
         <span>Upload Files</span>
       </div>

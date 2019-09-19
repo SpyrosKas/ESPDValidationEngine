@@ -43,7 +43,8 @@ mat-list-item h5 {
   text-align: center;
   /* background-color: rgb(206, 213, 223); */
   /* background-color: #ff9999; */
-  background-color: #f78888;
+  /* background-color: #f78888; */
+  background-color: #e42d9f;
   min-height: 100vh;
   display: flex;
   flex-direction: column;

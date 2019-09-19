@@ -1,7 +1,7 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { useSpring, animated } from "react-spring";
-import "./../App.css";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { useSpring, animated } from 'react-spring';
+import './../App.css';
 
 const calc = (x, y) => [
   -(y - window.innerHeight / 2) / 20,
@@ -18,15 +18,16 @@ function CardXmlVal() {
   }));
   return (
     <animated.div
-      className="card"
+      className='card'
       onMouseMove={({ clientX: x, clientY: y }) => set({ xys: calc(x, y) })}
       onMouseLeave={() => set({ xys: [0, 0, 1] })}
       style={{
         transform: props.xys.interpolate(trans),
-        backgroundColor: "#f3d250"
+        // backgroundColor: "#f3d250"
+        backgroundColor: '#d7dd35'
       }}
     >
-      <Link style={linkStyle} to="/xmlval">
+      <Link style={linkStyle} to='/xmlval'>
         XML Validation
       </Link>
     </animated.div>
@@ -34,8 +35,8 @@ function CardXmlVal() {
 }
 
 const linkStyle = {
-  color: "#fff",
-  textDecoration: "none"
+  color: '#fff',
+  textDecoration: 'none'
 };
 
 export default CardXmlVal;

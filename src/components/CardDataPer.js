@@ -1,7 +1,7 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { useSpring, animated } from "react-spring";
-import "./../App.css";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { useSpring, animated } from 'react-spring';
+import './../App.css';
 
 const calc = (x, y) => [
   -(y - window.innerHeight / 2) / 20,
@@ -18,15 +18,16 @@ function CardDataPer() {
   }));
   return (
     <animated.div
-      className="card"
+      className='card'
       onMouseMove={({ clientX: x, clientY: y }) => set({ xys: calc(x, y) })}
       onMouseLeave={() => set({ xys: [0, 0, 1] })}
       style={{
         transform: props.xys.interpolate(trans),
-        backgroundColor: "#f78888"
+        // backgroundColor: "#f78888"
+        backgroundColor: '#e42d9f'
       }}
     >
-      <Link style={linkStyle} to="/datper">
+      <Link style={linkStyle} to='/datper'>
         Data Persistence
       </Link>
     </animated.div>
@@ -34,8 +35,8 @@ function CardDataPer() {
 }
 
 const linkStyle = {
-  color: "#fff",
-  textDecoration: "none"
+  color: '#fff',
+  textDecoration: 'none'
 };
 
 export default CardDataPer;

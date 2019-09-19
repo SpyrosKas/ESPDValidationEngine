@@ -86,7 +86,7 @@
 }
 
 .button {
-  font-family: "Roboto medium", sans-serif;
+  font-family: 'Roboto medium', sans-serif;
   font-size: 14px;
   display: inline-block;
   height: 36px;
@@ -113,4 +113,60 @@
 button.disabled {
   background: rgb(189, 189, 189);
   cursor: default;
+}
+
+.container {
+  width: 100%;
+  text-align: center;
+}
+
+.stepbar {
+  counter-reset: step;
+  width: 100%;
+  /* text-align: start; */
+  margin: 0;
+  padding: 0;
+}
+.stepbar li {
+  list-style: none;
+  display: inline-block;
+  width: 50%;
+  position: relative;
+  text-align: center;
+  cursor: pointer;
+}
+.stepbar li:before {
+  content: counter(step);
+  counter-increment: step;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  border: 1px solid #ddd;
+  border-radius: 100%;
+  display: block;
+  text-align: center;
+  margin: 0 auto 10px auto;
+  background-color: #fff;
+}
+.stepbar li:after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  background-color: #ddd;
+  top: 15px;
+  left: -50%;
+  z-index: -1;
+}
+.stepbar li:first-child:after {
+  content: none;
+}
+.stepbar li.active {
+  color: green;
+}
+.stepbar li.active:before {
+  border-color: green;
+}
+.stepbar li.active + li:after {
+  background-color: green;
 }
