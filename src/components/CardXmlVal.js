@@ -24,7 +24,7 @@ function CardXmlVal() {
       style={{
         transform: props.xys.interpolate(trans),
         // backgroundColor: "#f3d250"
-        backgroundColor: '#d7dd35'
+        backgroundColor: '#999ecc'
       }}
     >
       <Link style={linkStyle} to='/xmlval'>

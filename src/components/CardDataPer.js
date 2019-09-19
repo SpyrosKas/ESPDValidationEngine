@@ -24,7 +24,7 @@ function CardDataPer() {
       style={{
         transform: props.xys.interpolate(trans),
         // backgroundColor: "#f78888"
-        backgroundColor: '#e42d9f'
+        backgroundColor: '#66b0c3'
       }}
     >
       <Link style={linkStyle} to='/datper'>

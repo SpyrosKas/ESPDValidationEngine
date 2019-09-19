@@ -24,7 +24,7 @@ function CardDataAcc() {
       style={{
         transform: props.xys.interpolate(trans),
         // backgroundColor: "#90ccf4"
-        backgroundColor: '#575da9'
+        backgroundColor: '#a8c19a'
       }}
     >
       <Link style={linkStyle} to='/datAcc'>
